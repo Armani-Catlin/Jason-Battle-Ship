@@ -24,18 +24,19 @@ class Board {
         columnFive = startColumn + 4;
     }
 
-    public int checkWinStatus() {
+    public int checkWinStatus(int[] row) {
+        // Find a way to change the current lettered array(a,b,etc.)
+        // Match shipRow to row array name
         int hits = 0;
-        if (shipRow == "a") {
-            for (int idx = 0; idx < 10; ++idx) {
-                if (columnOne == idx && a[columnOne] == 5) ++hits;
-                if (columnTwo == idx && a[columnTwo] == 5) ++hits;
-                if (columnThree == idx && a[columnThree] == 5) ++hits;
-                if (columnFour == idx && a[columnFour] == 5) ++hits;
-                if (columnFive == idx && a[columnFive] == 5) ++hits;
-            }
+        String values[] = {"a","b","c","d","e","f","g","h","i","j"};
+        for (int idx = 0; idx < 10; ++idx) {
+            if (columnOne == idx && row[columnOne] == 5)++hits;
+            if (columnTwo == idx && row[columnTwo] == 5)++hits;
+            if (columnThree == idx && row[columnThree] == 5)++hits;
+            if (columnFour == idx && row[columnFour] == 5)++hits;
+            if (columnFive == idx && row[columnFive] == 5)++hits;
         }
-        if (shipRow == "b") {
+        /* if (shipRow == "b") {
             for (int idx = 0; idx < 10; ++idx) {
                 if (columnOne == idx && b[columnOne] == 5) ++hits;
                 if (columnTwo == idx && b[columnTwo] == 5) ++hits;
@@ -115,7 +116,7 @@ class Board {
                 if (columnFour == idx && j[columnFour] == 5) ++hits;
                 if (columnFive == idx && j[columnFive] == 5) ++hits;
             }
-        }
+        } */
 
         String msg = "So far the number of hits you have is: " + hits;
         System.out.println(msg);
