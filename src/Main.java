@@ -11,7 +11,6 @@ public class Main {
         int rowRandom = (int)(Math.random() * 9); //0 to 9
         int columnStartRandom = (int)(Math.random() * 4); //0 to 4
         b.placeShip(rowRandom, columnStartRandom);
-
         while (hits < 5) {
             b.showBoard();
             b.handleUserGuess();

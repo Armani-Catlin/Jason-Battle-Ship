@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 class Board {
@@ -22,101 +23,22 @@ class Board {
         columnThree = startColumn + 2;
         columnFour = startColumn + 3;
         columnFive = startColumn + 4;
+        System.out.println(shipRow + " " + columnOne);
     }
 
-    public int checkWinStatus(int[] row) {
+    public int checkWinStatus() {
         // Find a way to change the current lettered array(a,b,etc.)
         // Match shipRow to row array name
         int hits = 0;
-        String values[] = {"a","b","c","d","e","f","g","h","i","j"};
-        for (int idx = 0; idx < 10; ++idx) {
-            if (columnOne == idx && row[columnOne] == 5)++hits;
-            if (columnTwo == idx && row[columnTwo] == 5)++hits;
-            if (columnThree == idx && row[columnThree] == 5)++hits;
-            if (columnFour == idx && row[columnFour] == 5)++hits;
-            if (columnFive == idx && row[columnFive] == 5)++hits;
-        }
-        /* if (shipRow == "b") {
+        for (int x = 0; x < rows.length; x++) {
             for (int idx = 0; idx < 10; ++idx) {
-                if (columnOne == idx && b[columnOne] == 5) ++hits;
-                if (columnTwo == idx && b[columnTwo] == 5) ++hits;
-                if (columnThree == idx && b[columnThree] == 5) ++hits;
-                if (columnFour == idx && b[columnFour] == 5) ++hits;
-                if (columnFive == idx && b[columnFive] == 5) ++hits;
+                if (columnOne == idx && rows[x][columnOne] == 5)++hits;
+                if (columnTwo == idx && rows[x][columnTwo] == 5)++hits;
+                if (columnThree == idx && rows[x][columnThree] == 5)++hits;
+                if (columnFour == idx && rows[x][columnFour] == 5)++hits;
+                if (columnFive == idx && rows[x][columnFive] == 5)++hits;
             }
         }
-        if (shipRow == "c") {
-            for (int idx = 0; idx < 10; ++idx) {
-                if (columnOne == idx && c[columnOne] == 5) ++hits;
-                if (columnTwo == idx && c[columnTwo] == 5) ++hits;
-                if (columnThree == idx && c[columnThree] == 5) ++hits;
-                if (columnFour == idx && c[columnFour] == 5) ++hits;
-                if (columnFive == idx && c[columnFive] == 5) ++hits;
-            }
-        }
-        if (shipRow == "d") {
-            for (int idx = 0; idx < 10; ++idx) {
-                if (columnOne == idx && d[columnOne] == 5) ++hits;
-                if (columnTwo == idx && d[columnTwo] == 5) ++hits;
-                if (columnThree == idx && d[columnThree] == 5) ++hits;
-                if (columnFour == idx && d[columnFour] == 5) ++hits;
-                if (columnFive == idx && d[columnFive] == 5) ++hits;
-            }
-        }
-        if (shipRow == "e") {
-            for (int idx = 0; idx < 10; ++idx) {
-                if (columnOne == idx && e[columnOne] == 5) ++hits;
-                if (columnTwo == idx && e[columnTwo] == 5) ++hits;
-                if (columnThree == idx && e[columnThree] == 5) ++hits;
-                if (columnFour == idx && e[columnFour] == 5) ++hits;
-                if (columnFive == idx && e[columnFive] == 5) ++hits;
-            }
-        }
-        if (shipRow == "f") {
-            for (int idx = 0; idx < 10; ++idx) {
-                if (columnOne == idx && f[columnOne] == 5) ++hits;
-                if (columnTwo == idx && f[columnTwo] == 5) ++hits;
-                if (columnThree == idx && f[columnThree] == 5) ++hits;
-                if (columnFour == idx && f[columnFour] == 5) ++hits;
-                if (columnFive == idx && f[columnFive] == 5) ++hits;
-            }
-        }
-        if (shipRow == "g") {
-            for (int idx = 0; idx < 10; ++idx) {
-                if (columnOne == idx && g[columnOne] == 5) ++hits;
-                if (columnTwo == idx && g[columnTwo] == 5) ++hits;
-                if (columnThree == idx && g[columnThree] == 5) ++hits;
-                if (columnFour == idx && g[columnFour] == 5) ++hits;
-                if (columnFive == idx && g[columnFive] == 5) ++hits;
-            }
-        }
-        if (shipRow == "h") {
-            for (int idx = 0; idx < 10; ++idx) {
-                if (columnOne == idx && h[columnOne] == 5) ++hits;
-                if (columnTwo == idx && h[columnTwo] == 5) ++hits;
-                if (columnThree == idx && h[columnThree] == 5) ++hits;
-                if (columnFour == idx && h[columnFour] == 5) ++hits;
-                if (columnFive == idx && h[columnFive] == 5) ++hits;
-            }
-        }
-        if (shipRow == "i") {
-            for (int idx = 0; idx < 10; ++idx) {
-                if (columnOne == idx && i[columnOne] == 5) ++hits;
-                if (columnTwo == idx && i[columnTwo] == 5) ++hits;
-                if (columnThree == idx && i[columnThree] == 5) ++hits;
-                if (columnFour == idx && i[columnFour] == 5) ++hits;
-                if (columnFive == idx && i[columnFive] == 5) ++hits;
-            }
-        }
-        if (shipRow == "j") {
-            for (int idx = 0; idx < 10; ++idx) {
-                if (columnOne == idx && j[columnOne] == 5) ++hits;
-                if (columnTwo == idx && j[columnTwo] == 5) ++hits;
-                if (columnThree == idx && j[columnThree] == 5) ++hits;
-                if (columnFour == idx && j[columnFour] == 5) ++hits;
-                if (columnFive == idx && j[columnFive] == 5) ++hits;
-            }
-        } */
 
         String msg = "So far the number of hits you have is: " + hits;
         System.out.println(msg);
@@ -268,6 +190,9 @@ class Board {
     public int[] h = {0,0,0,0,0,0,0,0,0,0};
     public int[] i = {0,0,0,0,0,0,0,0,0,0};
     public int[] j = {0,0,0,0,0,0,0,0,0,0};
+    public int[][] rows = new int[][]{
+            a,b,c,d,e,f,g,h,i,j
+    };
     public String shipRow;
     public int columnOne;
     public int columnTwo;
